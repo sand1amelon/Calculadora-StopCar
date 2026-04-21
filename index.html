@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Stop Car</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* Aquí es donde va tu foto de fondo */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://imgur.com/a/ozV6fG3');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .caja-principal {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 5px solid red;
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 { color: red; text-align: center; }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+        .total {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="caja-principal">
+    <h1>STOP CAR - CALCULADORA</h1>
+    
+    <div class="item"><span>Kit de reparación</span> <span>$900 <input type="checkbox" onclick="sumar(900, this)"></span></div>
+    <div class="item"><span>Motor V8 Upgrade</span> <span>$48.000 <input type="checkbox" onclick="sumar(48000, this)"></span></div>
+    <div class="item"><span>Frenos cerámicos</span> <span>$25.000 <input type="checkbox" onclick="sumar(25000, this)"></span></div>
+    <div class="item"><span>Turbo Charger</span> <span>$25.000 <input type="checkbox" onclick="sumar(25000, this)"></span></div>
+    <div class="item"><span>Tracción AWD</span> <span>$12.500 <input type="checkbox" onclick="sumar(12500, this)"></span></div>
+    <div class="item"><span>Kit de pintura</span> <span>$1.300 <input type="checkbox" onclick="sumar(1300, this)"></span></div>
+    <div class="item"><span>Stance/Suspensión</span> <span>$35.000 <input type="checkbox" onclick="sumar(35000, this)"></span></div>
+
+    <div class="total">Total a Pagar: $<span id="resultado">0</span></div>
+</div>
+
+<script>
+    let totalActual = 0;
+    function sumar(precio, casilla) {
+        if (casilla.checked) {
+            totalActual += precio;
+        } else {
+            totalActual -= precio;
+        }
+        document.getElementById('resultado').innerText = totalActual.toLocaleString();
+    }
+</script>
+
+</body>
+</html>
