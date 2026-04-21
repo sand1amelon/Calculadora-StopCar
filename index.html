@@ -8,26 +8,35 @@
         :root { --rojo: #b71c1c; --fondo: rgba(18, 18, 18, 0.95); }
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://imgur.com/a/ozV6fG3') no-repeat center center fixed;
+            /* https://media.discordapp.net/attachments/880979294606749766/1495979803717927044/uTJTZkT.png?ex=69e83743&is=69e6e5c3&hm=9060cc56cd791ad761fc567b24d154ecf92d8271ee17e31683e0b79db8e27968&=&format=webp&quality=lossless&width=1522&height=856 */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.imgur.com/TU_IMAGEN.jpg') no-repeat center center fixed;
             background-size: cover; color: white; margin: 0; padding: 20px;
             display: flex; flex-direction: column; align-items: center;
         }
-        .container { display: flex; gap: 20px; max-width: 1200px; width: 100%; justify-content: center; }
+        .container { display: flex; gap: 15px; max-width: 1300px; width: 100%; justify-content: center; align-items: flex-start; }
         .box { background: var(--fondo); border: 1px solid #444; border-radius: 5px; padding: 10px; }
         table { width: 100%; border-collapse: collapse; font-size: 0.8em; }
         th { background: var(--rojo); color: white; padding: 8px; border: 1px solid #444; }
         td { padding: 5px; border: 1px solid #444; text-align: center; }
         .cat { background: #f8bbd0; color: black; font-weight: bold; text-transform: uppercase; }
         input { width: 40px; background: #222; color: white; border: 1px solid #555; text-align: center; }
-        .info-box { width: 350px; font-size: 0.85em; }
-        .info-title { background: black; color: white; padding: 5px; text-align: center; font-weight: bold; margin-top: 10px; }
-        .reglas { color: red; text-align: left; padding: 10px; border-top: 1px solid #444; }
-        .total-banner { font-size: 1.5em; color: #69f0ae; font-weight: bold; margin: 10px 0; border: 2px solid #69f0ae; padding: 10px; }
+        
+        .side-panel { display: flex; flex-direction: column; gap: 15px; width: 350px; }
+        .info-title { background: black; color: white; padding: 5px; text-align: center; font-weight: bold; }
+        .reglas { color: #ff4d4d; text-align: left; padding: 10px; font-size: 0.85em; line-height: 1.4; }
+        .total-banner { font-size: 1.8em; color: #69f0ae; font-weight: bold; margin: 10px 0; border: 2px solid #69f0ae; padding: 10px; }
+
+        /* ESTILO FULL TUNING */
+        .ft-box { background: var(--rojo); color: white; padding: 15px; border-radius: 5px; cursor: pointer; border: 1px solid #ef5350; transition: 0.3s; }
+        .ft-box:hover { background: #d32f2f; transform: scale(1.02); }
+        .ft-list { font-size: 0.8em; text-align: left; list-style: none; padding: 0; margin: 10px 0; }
+        
+        .desc-table td { color: #69f0ae; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <h1 style="color: var(--rojo); text-shadow: 2px 2px black;">STOP CAR - CALCULADORA</h1>
+    <h1 style="color: var(--rojo); text-shadow: 2px 2px black; margin-bottom: 20px;">STOP CAR - CALCULADORA</h1>
 
     <div class="container">
         <div class="box">
@@ -37,66 +46,72 @@
                 </thead>
                 <tbody id="items">
                     <tr class="cat"><td colspan="5">Reparación</td></tr>
-                    <tr><td>Kit de reparación</td><td><input type="number" value="0" onchange="calc()" data-cost="500" data-price="900"></td><td>$500</td><td>$900</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Kit de reparación</td><td><input type="number" value="0" onchange="calc()" data-price="900"></td><td>$500</td><td>$900</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Rendimiento</td></tr>
-                    <tr><td>Piezas de Rendimiento</td><td><input type="number" value="0" onchange="calc()" data-cost="7000" data-price="9500"></td><td>$7.000</td><td>$9.500</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Piezas de Rendimiento</td><td><input type="number" value="0" onchange="calc()" data-price="9500"></td><td>$7.000</td><td>$9.500</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Pintura</td></tr>
-                    <tr><td>Kit de pintura</td><td><input type="number" value="0" onchange="calc()" data-cost="500" data-price="1300"></td><td>$500</td><td>$1.300</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Kit de pintura</td><td><input type="number" value="0" onchange="calc()" data-price="1300"></td><td>$500</td><td>$1.300</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Estética</td></tr>
-                    <tr><td>Piezas Cosméticas</td><td><input type="number" value="0" onchange="calc()" data-cost="2000" data-price="3800"></td><td>$2.000</td><td>$3.800</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Piezas Cosméticas</td><td><input type="number" value="0" onchange="calc()" data-price="3800"></td><td>$2.000</td><td>$3.800</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Ruedas / Llantas</td></tr>
-                    <tr><td>Set de Rines (Ruedas)</td><td><input type="number" value="0" onchange="calc()" data-cost="7000" data-price="10000"></td><td>$7.000</td><td>$10.000</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Set de Rines (Ruedas)</td><td><input type="number" value="0" onchange="calc()" data-price="10000"></td><td>$7.000</td><td>$10.000</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Humo Neumáticos</td></tr>
-                    <tr><td>Kit de Humo para neumáticos</td><td><input type="number" value="0" onchange="calc()" data-cost="2500" data-price="8000"></td><td>$2.500</td><td>$8.000</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Kit de Humo para neumáticos</td><td><input type="number" value="0" onchange="calc()" data-price="8000"></td><td>$2.500</td><td>$8.000</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Otros</td></tr>
-                    <tr><td>Motor V8 Upgrade</td><td><input type="number" value="0" onchange="calc()" data-cost="40000" data-price="48000"></td><td>$40.000</td><td>$48.000</td><td class="r-tot">$0</td></tr>
-                    <tr><td>Frenos cerámicos</td><td><input type="number" value="0" onchange="calc()" data-cost="8000" data-price="25000"></td><td>$8.000</td><td>$25.000</td><td class="r-tot">$0</td></tr>
-                    <tr><td>Turbo Charger</td><td><input type="number" value="0" onchange="calc()" data-cost="25000" data-price="25000"></td><td>$25.000</td><td>$25.000</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Motor V8 Upgrade</td><td><input type="number" value="0" onchange="calc()" data-price="48000"></td><td>$40.000</td><td>$48.000</td><td class="r-tot">$0</td></tr>
+                    <tr><td>Frenos cerámicos</td><td><input type="number" value="0" onchange="calc()" data-price="25000"></td><td>$8.000</td><td>$25.000</td><td class="r-tot">$0</td></tr>
+                    <tr><td>Turbo Charger</td><td><input type="number" value="0" onchange="calc()" data-price="25000"></td><td>$25.000</td><td>$25.000</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Tracción</td></tr>
-                    <tr><td>Tracción AWD / RWD / FWD</td><td><input type="number" value="0" onchange="calc()" data-cost="8000" data-price="12500"></td><td>Varía</td><td>$12.500</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>AWD / RWD / FWD</td><td><input type="number" value="0" onchange="calc()" data-price="12500"></td><td>Varía</td><td>$12.500</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Neumáticos</td></tr>
-                    <tr><td>Slick / Semi / Offroad</td><td><input type="number" value="0" onchange="calc()" data-cost="4000" data-price="7000"></td><td>Varía</td><td>$7.000</td><td class="r-tot">$0</td></tr>
-                    
+                    <tr><td>Slick / Semi / Offroad</td><td><input type="number" value="0" onchange="calc()" data-price="7000"></td><td>Varía</td><td>$7.000</td><td class="r-tot">$0</td></tr>
                     <tr class="cat"><td colspan="5">Extras</td></tr>
-                    <tr><td>Stance o suspensión</td><td><input type="number" value="0" onchange="calc()" data-cost="3000" data-price="35000"></td><td>$3.000</td><td>$35.000</td><td class="r-tot">$0</td></tr>
-                    <tr><td>Extras generales</td><td><input type="number" value="0" onchange="calc()" data-cost="4000" data-price="9000"></td><td>$4.000</td><td>$9.000</td><td class="r-tot">$0</td></tr>
+                    <tr><td>Stance o suspensión</td><td><input type="number" value="0" onchange="calc()" data-price="35000"></td><td>$3.000</td><td>$35.000</td><td class="r-tot">$0</td></tr>
+                    <tr><td>Extras generales</td><td><input type="number" value="0" onchange="calc()" data-price="9000"></td><td>$4.000</td><td>$9.000</td><td class="r-tot">$0</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="info-box">
+        <div class="side-panel">
             <div class="box" style="text-align:center;">
                 <div style="color:red; font-weight:bold;">TOTAL A COBRAR</div>
-                <div class="total-banner">$<span id="final-res">0</span></div>
-                <button onclick="location.reload()" style="width:100%; padding:8px; cursor:pointer;">REINICIAR</button>
+                <div id="display-total" class="total-banner">$0</div>
+                <button onclick="location.reload()" style="width:100%; padding:10px; cursor:pointer; background:#333; color:white; border:none; border-radius:3px;">REINICIAR</button>
             </div>
 
-            <div class="info-title">EXTRAS</div>
-            <div class="box reglas">
-                1. Kit de Stance esta permitido la instalación por $5.000 sin buguear el coche.<br><br>
-                2. Neones o Luces de neon estan prohibido instalar para todos los vehiculos (solo con xp)<br><br>
-                3. Los trabajadores del Taller pueden realizar sus tuneos por el 15% de descuento<br><br>
-                4. Para los convenios, pedir que se les haga una factura de $1 de ese mismo negocio (con el menu de F6)
+            <div class="ft-box" onclick="addFT()">
+                <div style="font-weight:bold; text-align:center;">+ FULL TUNING $105.000</div>
+                <ul class="ft-list">
+                    <li>• Motor V8: $48.000</li>
+                    <li>• Turbo Charger: $25.000</li>
+                    <li>• Frenos Cerámicos: $25.000</li>
+                    <li>• Llantas Slick: $7.000</li>
+                    <li>• Tracción AWD: $12.500</li>
+                </ul>
+                <div style="font-size:0.7em; text-align:center;">(Clic para sumar todo junto)</div>
             </div>
 
-            <div class="info-title">INFORMACION DESCUENTOS</div>
+            <div class="box">
+                <div class="info-title">DESCUENTOS</div>
+                <table class="desc-table" style="margin-top:5px;">
+                    <tr><td>5%</td><td id="d5">$0</td></tr>
+                    <tr><td>10%</td><td id="d10">$0</td></tr>
+                    <tr><td>15%</td><td id="d15">$0</td></tr>
+                </table>
+            </div>
+
             <div class="box reglas">
-                1. Tener en cuenta que el valor indicado en DESCUENTO corresponde al monto final que debe cobrarse únicamente en los casos en que se aplique un descuento al cliente.<br><br>
-                2. Los descuentos solo pueden realizarse por convenio o precio de mecánico. En cualquier otro caso, no están permitidos.<br><br>
-                3. Aplicar descuentos mayores al 15% genera pérdidas para el taller, por lo tanto no deben realizarse.
+                <strong>EXTRAS:</strong><br>
+                1. Stance permitido por $5.000 sin buguear.<br>
+                2. Neones prohibidos (solo XP).<br>
+                3. Mecánicos: 15% de descuento.<br>
+                4. Convenios: Factura de $1 (F6).
             </div>
         </div>
     </div>
 
     <script>
+        let ftValue = 0;
         function calc() {
             let total = 0;
             document.querySelectorAll('#items tr:not(.cat)').forEach(tr => {
@@ -106,7 +121,16 @@
                 tr.querySelector('.r-tot').innerText = '$' + sub.toLocaleString();
                 total += sub;
             });
-            document.getElementById('final-res').innerText = total.toLocaleString();
+            let final = total + ftValue;
+            document.getElementById('display-total').innerText = '$' + final.toLocaleString();
+            document.getElementById('d5').innerText = '$' + (final * 0.95).toLocaleString();
+            document.getElementById('d10').innerText = '$' + (final * 0.90).toLocaleString();
+            document.getElementById('d15').innerText = '$' + (final * 0.85).toLocaleString();
+        }
+        function addFT() {
+            ftValue += 105000;
+            calc();
+            alert("¡Full Tuning de $105.000 agregado al total!");
         }
     </script>
 </body>
